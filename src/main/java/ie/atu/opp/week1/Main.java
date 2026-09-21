@@ -6,8 +6,6 @@ public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello OPP");
-
         Book firstBook = new Book();
 
         firstBook.title = "Surrounded by Idiots";
@@ -15,7 +13,6 @@ public class Main
         firstBook.pageCont = 387;
 
         firstBook.InfoPrint();
-        System.out.println("\n");
         firstBook.borrowBook();
         System.out.println("\n");
 
