@@ -15,14 +15,19 @@ public class Main
         firstBook.pageCont = 387;
 
         firstBook.InfoPrint();
+        System.out.println("\n");
+        firstBook.borrowBook();
+        System.out.println("\n");
 
         Book secondBook = new Book();
 
         secondBook.title = "The Lord of the Rings";
         secondBook.author = "J.K. Rowling";
         secondBook.pageCont = 387;
-        secondBook.InfoPrint();
+        secondBook.isAvailable = false;
 
         secondBook.InfoPrint();
+        secondBook.borrowBook();
+        System.out.println("\n");
     }
 }
