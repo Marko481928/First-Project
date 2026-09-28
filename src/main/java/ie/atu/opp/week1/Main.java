@@ -6,19 +6,16 @@ public class Main
 {
     public static void main(String[] args)
     {
-
+        Book myBook = new Book("Dune", "Marko", 1);
+        myBook.borrowBook();
         try
         {
-            Book myBook = new Book("Dune", "Marko", 1);
-            System.out.println(myBook.getTitle());
-            System.out.println(myBook.getAuthor());
-            System.out.println(myBook.getPageCont());
             myBook.borrowBook();
-            System.out.println(myBook.getStatus());
         }
-        catch (IllegalArgumentException ex)
+        catch (IllegalStateException ex)
         {
             System.out.println("Error: " + ex.getMessage());
         }
+        System.out.println(myBook.getStatus());
     }
 }
