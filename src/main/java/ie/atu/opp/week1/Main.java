@@ -7,15 +7,10 @@ public class Main
     public static void main(String[] args)
     {
         Book myBook = new Book("Dune", "Marko", 1);
+        System.out.println(myBook.getStatus());
         myBook.borrowBook();
-        try
-        {
-            myBook.borrowBook();
-        }
-        catch (IllegalStateException ex)
-        {
-            System.out.println("Error: " + ex.getMessage());
-        }
+        System.out.println(myBook.getStatus());
+        myBook.returnBook();
         System.out.println(myBook.getStatus());
     }
 }
