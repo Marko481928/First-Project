@@ -6,6 +6,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello OPP");
+        Book myBook = new Book("Dune", "Frank", 387);
+        System.out.println(myBook.getTitle());
+        System.out.println(myBook.getAuthor());
+        System.out.println(myBook.getPageCont());
     }
 }
