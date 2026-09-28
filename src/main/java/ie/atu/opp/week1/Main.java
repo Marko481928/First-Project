@@ -6,16 +6,22 @@ public class Main
 {
     public static void main(String[] args)
     {
-        int loanDays = 4;
-        Book book = new Book("Dune", "Frank Herbert", 412);
         LibraryService service = new LibraryService();
         try
         {
-            service.loanBook(book, loanDays);
-        } catch (IllegalArgumentException ex)
+            service.loanBook(null, 7);
+        }
+        catch (IllegalArgumentException ex)
         {
             System.out.println(ex.getMessage());
         }
-        System.out.println(book.getStatus());
+        try
+        {
+            service.returnBook(null);
+        }
+        catch (IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 }
