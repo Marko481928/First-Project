@@ -9,10 +9,12 @@ public class Main
 
         try
         {
-            Book myBook = new Book("Dune", " Marko", 0);
+            Book myBook = new Book("Dune", "Marko", 1);
             System.out.println(myBook.getTitle());
             System.out.println(myBook.getAuthor());
             System.out.println(myBook.getPageCont());
+            myBook.borrowBook();
+            System.out.println(myBook.getStatus());
         }
         catch (IllegalArgumentException ex)
         {

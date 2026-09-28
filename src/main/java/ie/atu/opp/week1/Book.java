@@ -5,7 +5,7 @@ public class Book
     private String title;
     private String author;
     private int pageCont;
-
+    private BookStatus status;
 
 
     public Book(String title, String author, int pageCont)
@@ -13,6 +13,7 @@ public class Book
         this.title = title;
         this.author = author;
         this.pageCont = pageCont;
+        this.status = BookStatus.AVAILABLE;
         if(title == null || title.isBlank())
         {
             throw new IllegalArgumentException("Title cannot be null or empty");
@@ -27,6 +28,8 @@ public class Book
         {
             throw new IllegalArgumentException("Page cannot be less than 1");
         }
+
+
     }
 
     public String getTitle()
@@ -42,5 +45,24 @@ public class Book
     public int getPageCont()
     {
         return pageCont;
+    }
+
+    public BookStatus getStatus()
+    {
+        return status;
+    }
+
+    public enum BookStatus
+    {
+        AVAILABLE,
+        ON_LOAN
+    }
+
+    public void borrowBook() {
+        if (status == BookStatus.ON_LOAN) {
+            throw new IllegalStateException(
+                    "Book is already on loan");
+        }
+        status = BookStatus.ON_LOAN;
     }
 }
