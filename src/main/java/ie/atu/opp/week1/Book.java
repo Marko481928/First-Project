@@ -2,7 +2,7 @@ package ie.atu.opp.week1;
 
 public class Book
 {
-    private String title;
+    private final String title;
     private String author;
     private int pageCont;
     private BookStatus status;
@@ -28,8 +28,6 @@ public class Book
         {
             throw new IllegalArgumentException("Page cannot be less than 1");
         }
-
-
     }
 
     public String getTitle()
