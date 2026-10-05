@@ -43,16 +43,19 @@ public class LibraryService
     public int getBookCount()
     {
         return books.size();
-
     }
+
     public List<Book> getAllBooks()
     {
         return new ArrayList<>(books);
     }
 
-    public Book findBookByTitle(String title) {
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
+    public Book findBookByTitle(String title)
+    {
+        for (Book book : books)
+        {
+            if (book.getTitle().equalsIgnoreCase(title))
+            {
                 return book;
             }
         }
