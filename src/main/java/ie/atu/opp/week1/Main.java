@@ -5,18 +5,19 @@ package ie.atu.opp.week1;
 public class Main
 {
     public static void main(String[] args) {
-        Book first = new Book("Dune", "Frank Herbert", 412);
-        Book second = new Book("Clean Code", "Robert C. Martin", 464);
+        Book dune = new Book(
+                "Dune", "Frank Herbert", 412);
+        Book nineteenEightyFour = new Book(
+                "1984", "George Orwell", 328);
+        Book cleanCode = new Book(
+                "Clean Code", "Robert C. Martin", 464);
         LibraryService service = new LibraryService();
-
-        service.addBook(first);
-        service.addBook(second);
-        System.out.println("Total books in Library Service is " + service.getBookCount());
-
-        for(Book book : service.getAllBooks())
-        {
+        service.addBook(dune);
+        service.addBook(nineteenEightyFour);
+        service.addBook(cleanCode);
+        System.out.println("Books: " + service.getBookCount());
+        for (Book book : service.getAllBooks()) {
             System.out.println(book.getTitle());
         }
-
     }
 }

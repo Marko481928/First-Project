@@ -50,12 +50,6 @@ public class Book
         return status;
     }
 
-    public enum BookStatus
-    {
-        AVAILABLE,
-        ON_LOAN
-    }
-
     public void borrowBook() {
         if (status == BookStatus.ON_LOAN)
         {
