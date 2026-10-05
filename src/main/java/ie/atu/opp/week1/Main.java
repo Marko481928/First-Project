@@ -9,26 +9,14 @@ public class Main
         Book second = new Book("Clean Code", "Robert C. Martin", 464);
         LibraryService service = new LibraryService();
 
-        System.out.println(first.getStatus());
-        service.loanBook(first, 7);
+        service.addBook(first);
+        service.addBook(second);
+        System.out.println("Total books in Library Service is " + service.getBookCount());
 
-        System.out.println(first.getStatus());
-        service.returnBook(first);
-
-        System.out.println(first.getStatus());
-        System.out.println(second.getStatus());
-
-
-        try
+        for(Book book : service.getAllBooks())
         {
-            service.loanBook(first, 15);
+            System.out.println(book.getTitle());
         }
-        catch (IllegalArgumentException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-        System.out.println(first.getStatus());
-        service.returnBook(first);
-        System.out.println(first.getStatus());
+
     }
 }
