@@ -18,6 +18,7 @@ public class Main
         System.out.println(first.getStatus());
         System.out.println(second.getStatus());
 
+
         try
         {
             service.loanBook(first, 15);
@@ -26,6 +27,8 @@ public class Main
         {
             System.out.println(ex.getMessage());
         }
+        System.out.println(first.getStatus());
+        service.returnBook(first);
         System.out.println(first.getStatus());
     }
 }
