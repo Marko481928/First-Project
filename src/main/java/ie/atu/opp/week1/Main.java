@@ -27,5 +27,12 @@ public class Main
         {
             System.out.println("Found: " + found.getTitle());
         }
+
+        Book missing = service.findBookByTitle("The Hobbit");
+
+        if (missing == null)
+        {
+            System.out.println("The Hobbit was not found");
+        }
     }
 }
