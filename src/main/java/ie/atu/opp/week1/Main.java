@@ -34,5 +34,9 @@ public class Main
         {
             System.out.println("The Hobbit was not found");
         }
+
+        System.out.println("Remove Clean Code: " + service.removeBook("Clean Code"));
+        System.out.println("Remove again: " + service.removeBook("Clean Code"));
+        System.out.println("Books left: " + service.getBookCount());
     }
 }
