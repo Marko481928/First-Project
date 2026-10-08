@@ -21,20 +21,20 @@ public class LibraryService
         {
             return false;
         }
+
         book.borrowBook();
         return true;
     }
 
-    public void returnBook(Book book)
+    public boolean returnBook(String title)
     {
+        Book book = findBookByTitle(title);
         if (book == null)
         {
-            throw new IllegalArgumentException("Book must not be null");
+            return false;
         }
-        else
-        {
-            book.returnBook();
-        }
+        book.returnBook();
+        return true;
     }
 
     public void addBook(Book book)
@@ -67,14 +67,18 @@ public class LibraryService
         return null;
     }
 
-    public boolean returnBook(String title)
+    public boolean removeBook(String title)
     {
-        Book book = findBookByTitle(title);
-        if (book == null)
+        Book result;
+        result = findBookByTitle(title);
+        if(result == null)
         {
             return false;
         }
-        book.returnBook();
-        return true;
+        else
+        {
+            books.remove(result);
+            return true;
+        }
     }
 }
