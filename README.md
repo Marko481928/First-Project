@@ -105,3 +105,21 @@ or if loanDays is below or above min/max days value. If all conditions are false
 If one of the conditions is true - it displays error message. 
 
 I used AI only for answering few questions for better and deep understanding. All the code is written by me.
+
+
+
+
+# OOP Lab 3: Java Book Tracker
+
+## Big updates 
+Lab4 changes LibraryService from working with a single supplied book to owing a List<Book>. It's capable to do so
+because 2 List packages were added, so we could use Array's Lists.
+
+## What List<Book> tells the compiler. 
+Basically it tells the Java compiler "The list will contain objects of type Book".
+
+## Why final does not prevent books.add(...).
+Because 'final' prevents from reassigning a variable, not modifying am object.
+In out case books is a reference to a list, so we can't make it refer to a different list. 
+When we use books.add() we're modifying the contents of existing list, which books refers to.
+
