@@ -6,7 +6,7 @@ public class BookExceptionCheck
     {
         try
         {
-            Book invalid = new Book("Dune", "Frank Herbert", 412);
+            Book invalid = new Book("Dune   ", "Frank Herbert", 412);
             System.out.println(invalid.getTitle());
         }
         catch (IllegalArgumentException ex)

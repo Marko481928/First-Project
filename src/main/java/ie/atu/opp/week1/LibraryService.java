@@ -81,4 +81,16 @@ public class LibraryService
             return true;
         }
     }
+
+    public List<Book> getBooks()
+    {
+        return new ArrayList<>(books);
+    }
+    public void displayBook()
+    {
+        for(Book book : books)
+        {
+            System.out.println(book.getTitle() + " - " + book.getStatus());
+        }
+    }
 }
