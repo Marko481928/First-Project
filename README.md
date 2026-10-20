@@ -1,125 +1,54 @@
-# OOP Lab 1: Java Book Tracker
 
-##Run
-Open the project in IntelliJ with JDK 24 and run Main.java
+# Lab 5 -- Exceptions and CSV Persistence
 
-##Object Model
-Book defines an object of a book for output details
-firstBook is a first object of a book class
-secondBook is a second object of a book class
-infoPrint() is a method of Book class which prints book details
-borrowBook() is a method of Book class which verifies is the book available or not, if it's available method prints "book is borrowed" and after changes isAvailable value to false.
+## Throw and catch
 
-##Verification 
+The throw statement is used inside the Book class when something is
+wrong, for example if the title is empty or the page count is less
+than 1. It throws an exception and stops that operation.
 
-Book: Surrounded by Idiots
-Book Author: Thomas Erikson
-Book Page: 387
-Is Book available? true
-Book Borrowed
+The catch block is used by the code that calls the method. It can
+catch the exception and decide what to do, for example print an error
+message. So throw sends the problem, and catch handles it.
+Path.of(...), Path and Files
 
+## Path.of("data", "books.csv") 
+Creates a Path object for the location data/books.csv. It describes where the file should be, but it does not
+create the file itself.
 
-Book: The Lord of the Rings
-Book Author: J.K. Rowling
-Book Page: 387
-Is Book available? false
-Book Not Available
+Path represents the file or folder location. One Path method used in
+the lab is getFileName(), which gets the file name from the path.
 
+Files is a utility class with methods for working with files and
+folders. One Files method used in the lab is
+Files.readAllLines(file), which reads the file lines into a list. The
+lab also uses Files.write(...) and Files.createDirectories(...).
+NumberFormatException and IOException
 
-It displays details of each book/object, detects if the book available and allow or either don't allow to borrow a book. 
+## NumberFormatException is unchecked. 
+It can happen when Integer.parseInt(text) gets text that is not a valid integer, like
+abc. Java does not force us to catch this exception at compile time.
 
+## IOException is checked. File operations can cause this exception, for
+example when loading or saving the CSV file fails. Java requires us to
+catch it or declare it with throws.
+Lab 5 and CSV persistence
 
-# OOP Lab 3: Java Book Tracker
+## Lab 5 adds exception handling and CSV persistence to the Library
+application. The books can be saved in data/books.csv and loaded again
+when the program starts, so the data can stay after the program is
+closed.
 
-##The JDK version and Java package.
-Java version: 24, package: Maven
+## How ON_LOAN is restored
 
-##Why the constructor checks for null before calling isBlank().
-Because null checking if the variable is empty, if it's empty then condition is true, while isBlank() is checking rather
-the variable has anything else except whitespace characters(such as spaces, tabs, newlines, etc).
+When loading a row from the CSV file, the program checks if the saved
+status is ON_LOAN. If it is, it calls book.borrowBook(). This
+changes the status to ON_LOAN, so we do not need to add a
+setStatus() method. The status is restored using the existing method
+and the normal rules of the Book class.
+AI assistance
 
-##Why title, author and pageCount are final while status is not.
-Because title, author and pageCount are not gonna change, that's why we give them a final 'state'(correct me if my term-
-inology using is wrong), while status changes everytime by calling "borrowBook" or "returnBook".
+## AI assistance
 
-##Why Book uses borrowBook and returnBook rather than a status setter.
-Because both methods they complete not a single just status change, they have error message output and if-statement, which makes 
-condition when status of a book is not allowed to change. That makes the program algorithm/system smarter and harder to fool.
-
-##Which checks belong in Book and which belong in LibraryService.
-Book checks the status of a field and protecting status from being invalid.
-LibraryService involves Book entities and checks if the member reached max borrow limit, and if the boo is null while returnBook method called.
-
-##The results of a successful loan, a rejected loan,
-AVAILABLE
-ON_LOAN
-AVAILABLE
-AVAILABLE
-Loan days must be from 1 to 14
-AVAILABLE
-Exception in thread "main" java.lang.IllegalStateException: Book is already available
-at ie.atu.opp.week1.Book.returnBook(Book.java:70)
-at ie.atu.opp.week1.LibraryService.returnBook(LibraryService.java:27)
-at ie.atu.opp.week1.Main.main(Main.java:31)
-
-Process finished with exit code 1
-
-##Maven build
-/bin/sh /home/Anasui08/Downloads/idea-IU-262.10968.63/plugins/maven-plugin/lib/maven3/bin/mvn -Didea.version=2026.2.3 -Dmaven.ext.class.path=/home/Anasui08/Downloads/idea-IU-262.10968.63/plugins/maven-plugin/lib/intellij.maven.rt/maven-event-listener.jar -Djansi.passthrough=true -Dstyle.color=always -Dmaven.repo.local=/home/Anasui08/.m2/repository package -f pom.xml
-[INFO] Scanning for projects...
-[INFO]
-[INFO] -------------------< ie.atu.opp.week1:book-tracker >--------------------
-[INFO] Building book-tracker 1.0-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- resources:3.4.0:resources (default-resources) @ book-tracker ---
-[INFO] skip non existing resourceDirectory /home/Anasui08/IdeaProjects/First-Project/src/main/resources
-[INFO]
-[INFO] --- compiler:3.15.0:compile (default-compile) @ book-tracker ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO]
-[INFO] --- resources:3.4.0:testResources (default-testResources) @ book-tracker ---
-[INFO] skip non existing resourceDirectory /home/Anasui08/IdeaProjects/First-Project/src/test/resources
-[INFO]
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ book-tracker ---
-[INFO] No sources to compile
-[INFO]
-[INFO] --- surefire:3.5.4:test (default-test) @ book-tracker ---
-[INFO] No tests to run.
-[INFO]
-[INFO] --- jar:3.5.0:jar (default-jar) @ book-tracker ---
-[INFO] Building jar: /home/Anasui08/IdeaProjects/First-Project/target/book-tracker-1.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.720 s
-[INFO] Finished at: 2026-10-04T19:18:52+01:00
-[INFO] ------------------------------------------------------------------------
-
-
-##Your debugger observations and any material AI assistance
-If to use breakpoints which were given in previous steps(at service.loanBook(first, 7); and service.loanBook(first, 15);).
-When you call loanBook the program checks loanBook method in LibraryService for if-statements conditions, is the book = null 
-or if loanDays is below or above min/max days value. If all conditions are false then the program calls method borrowBook from Book class. 
-If one of the conditions is true - it displays error message. 
-
-I used AI only for answering few questions for better and deep understanding. All the code is written by me.
-
-
-
-
-# OOP Lab 3: Java Book Tracker
-
-## Big updates 
-Lab4 changes LibraryService from working with a single supplied book to owing a List<Book>. It's capable to do so
-because 2 List packages were added, so we could use Array's Lists.
-
-## What List<Book> tells the compiler. 
-Basically it tells the Java compiler "The list will contain objects of type Book".
-
-## Why final does not prevent books.add(...).
-Because 'final' prevents from reassigning a variable, not modifying am object.
-In out case books is a reference to a list, so we can't make it refer to a different list. 
-When we use books.add() we're modifying the contents of existing list, which books refers to.
-
+I used ChatGPT to help explain some Java concepts and to help draft this
+README section. I checked the explanation against my Lab 5 code.

@@ -46,7 +46,8 @@ public class BookFileStore
         return book;
     }
 
-    public List<Book> load() throws IOException {
+    public List<Book> load() throws IOException
+    {
         List<Book> books = new ArrayList<>();
         if (Files.notExists(file)) {
             return books;
